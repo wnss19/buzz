@@ -4,33 +4,41 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>BrandLift | Professional Web Solutions</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/> 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@700&display=swap" rel="stylesheet"/>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link rel="icon" href="https://placehold.co/32x32/2563eb/ffffff?text=%E2%86%91" type="image/png">
   <style>
+    /* Define CSS Variables for consistent styling */
     :root {
-      --primary: #2563eb; 
-      --primary-dark: #1e40af;
-      --secondary: #f59e0b;
-      --dark: #111827;
-      --light: #f9fafb;
-      --gray: #6b7280;
-      --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      --primary: #2563eb; /* Blue */
+      --primary-dark: #1e40af; /* Darker Blue */
+      --secondary: #f59e0b; /* Amber/Orange */
+      --dark: #1a202c; /* Soft Black */
+      --light: #fdfdfe; /* Off-White */
+      --gray: #6b7280; /* Medium Gray */
+      --border-light: #e2e8f0; /* Light Gray for borders */
+      /* Smoother transition curve for all animations */
+      --transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
 
+    /* Universal Box-Sizing for consistent layout */
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
 
+    /* Body Styles */
     body {
       font-family: 'Poppins', sans-serif;
       background-color: var(--light);
       color: var(--dark);
-      overflow-x: hidden;
+      overflow-x: hidden; /* Prevent horizontal scroll */
       line-height: 1.7;
     }
 
+    /* Heading Font Styles */
     h1,
     h2,
     h3,
@@ -39,6 +47,7 @@
       font-weight: 700;
     }
 
+    /* Container for content width limitation */
     .container {
       width: 90%;
       max-width: 1200px;
@@ -46,58 +55,63 @@
       padding: 0 20px;
     }
 
+    /* Section base styles */
     section {
-      padding: 120px 0;
+      padding: 100px 0; /* Consistent vertical padding for sections */
       position: relative;
+      overflow: hidden; /* Hide overflowing elements like background shapes */
     }
 
-    /* Animated Background Elements */
+    /* Animated Background Elements - Subtle and Blurry */
     .bg-shape {
       position: absolute;
-      border-radius: 50%;
-      filter: blur(60px);
-      opacity: 0.15;
-      z-index: -1;
+      border-radius: 50%; /* Circular shape */
+      filter: blur(80px); /* Heavy blur for soft glow */
+      opacity: 0.1; /* Very subtle */
+      z-index: -1; /* Behind content */
     }
 
     .shape-1 {
-      width: 400px;
-      height: 400px;
+      width: 350px;
+      height: 350px;
       background: var(--primary);
-      top: -100px;
-      left: -100px;
-      animation: float 8s ease-in-out infinite;
+      top: -80px;
+      left: -80px;
+      animation: float 10s ease-in-out infinite; /* Slower, smoother animation */
     }
 
     .shape-2 {
-      width: 300px;
-      height: 300px;
+      width: 250px;
+      height: 250px;
       background: var(--secondary);
-      bottom: -50px;
-      right: -50px;
-      animation: float 10s ease-in-out infinite reverse;
+      bottom: -40px;
+      right: -40px;
+      animation: float 12s ease-in-out infinite reverse; /* Slower, reversed animation */
     }
 
+    /* Keyframe animation for floating shapes */
     @keyframes float {
-      0% { transform: translate(0, 0) rotate(0deg); }
-      50% { transform: translate(30px, 50px) rotate(5deg); }
-      100% { transform: translate(0, 0) rotate(0deg); }
+      0% { transform: translate(0, 0) rotate(0deg) scale(1); }
+      50% { transform: translate(20px, 30px) rotate(3deg) scale(1.02); } /* Subtle movement and scale */
+      100% { transform: translate(0, 0) rotate(0deg) scale(1); }
     }
 
-    /* Header */
+    /* Header Styles */
     header {
-      position: fixed;
+      position: fixed; /* Fixed at the top */
       width: 100%;
-      z-index: 1000;
+      z-index: 1000; /* High z-index to stay on top */
       transition: var(--transition);
-      padding: 25px 0;
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(10px);
+      padding: 20px 0;
+      background: rgba(255, 255, 255, 0.98); /* Near-opaque white with blur */
+      backdrop-filter: blur(15px); /* Glassy effect */
+      border-bottom: 1px solid var(--border-light); /* Subtle bottom border */
     }
 
+    /* Header style when scrolled */
     header.scrolled {
-      box-shadow: 0 5px 30px rgba(0, 0, 0, 0.1);
-      padding: 15px 0;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08); /* Lighter, diffused shadow */
+      padding: 12px 0; /* Reduced padding when scrolled */
     }
 
     .header-container {
@@ -106,68 +120,74 @@
       align-items: center;
     }
 
+    /* Logo Styles */
     .logo {
-      font-size: 28px;
+      font-size: 26px;
       font-weight: 700;
       color: var(--primary);
       text-decoration: none;
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 8px;
     }
 
     .logo-icon {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      width: 40px;
-      height: 40px;
+      width: 38px;
+      height: 38px;
       background: var(--primary);
       color: white;
-      border-radius: 10px;
-      transform: rotate(15deg);
+      border-radius: 8px; /* Rounded corners */
+      transform: rotate(10deg); /* Initial slight rotation */
       transition: var(--transition);
     }
 
     .logo:hover .logo-icon {
-      transform: rotate(0deg);
+      transform: rotate(0deg) scale(1.05); /* Straighten and slightly grow on hover */
     }
 
+    /* Navigation Menu Styles */
     nav ul {
       display: flex;
       list-style: none;
-      gap: 30px;
+      gap: 25px;
     }
 
     nav ul li a {
       text-decoration: none;
       color: var(--dark);
-      font-weight: 600;
+      font-weight: 500;
       position: relative;
       transition: var(--transition);
-      font-size: 16px;
+      font-size: 15px;
+      padding: 5px 0; /* Added padding for larger hover area */
     }
 
+    /* Underline effect for navigation links */
     nav ul li a:after {
       content: '';
       position: absolute;
       width: 0;
-      height: 3px;
+      height: 2px;
       background: var(--primary);
-      bottom: -5px;
+      bottom: -3px;
       left: 0;
       transition: var(--transition);
-      border-radius: 3px;
+      border-radius: 1px;
     }
 
     nav ul li a:hover {
       color: var(--primary);
+      transform: translateY(-2px); /* Subtle lift on hover */
     }
 
     nav ul li a:hover:after {
-      width: 100%;
+      width: 100%; /* Expand underline on hover */
     }
 
+    /* Mobile Menu Button (Hidden on Desktop) */
     .mobile-menu-btn {
       display: none;
       background: none;
@@ -178,51 +198,58 @@
       z-index: 1001;
     }
 
-    /* Hero Section */
+    /* Hero Section Styles */
     .hero {
       height: 100vh;
-      min-height: 800px;
+      min-height: 700px;
       display: flex;
       align-items: center;
       position: relative;
       overflow: hidden;
-      background: linear-gradient(135deg, rgba(249, 250, 251, 0.9) 0%, rgba(241, 245, 249, 0.9) 100%);
+      background: linear-gradient(135deg, var(--light) 0%, rgba(241, 245, 249, 0.8) 100%);
+    }
+
+    /* Particles.js container for hero background */
+    #particles-js {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      z-index: 1; /* Below hero content */
+      opacity: 0.7; /* Make particles subtle */
     }
 
     .hero-content {
-      max-width: 600px;
+      max-width: 550px;
       position: relative;
-      z-index: 2;
+      z-index: 2; /* Above particles */
+      text-align: left;
     }
 
     .hero h1 {
-      font-size: 3.5rem;
-      line-height: 1.2;
-      margin-bottom: 20px;
+      font-size: 3.2rem;
+      line-height: 1.15;
+      margin-bottom: 18px;
       background: linear-gradient(90deg, var(--primary), var(--primary-dark));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      opacity: 0;
-      transform: translateY(30px);
-      animation: fadeUp 0.8s forwards 0.3s;
     }
 
     .hero p {
-      font-size: 1.25rem;
+      font-size: 1.15rem;
       color: var(--gray);
-      margin-bottom: 30px;
-      opacity: 0;
-      transform: translateY(30px);
-      animation: fadeUp 0.8s forwards 0.5s;
+      margin-bottom: 25px;
     }
 
+    /* General Button Styles */
     .btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
       gap: 10px;
-      padding: 16px 32px;
-      border-radius: 10px;
+      padding: 14px 28px;
+      border-radius: 8px;
       font-weight: 600;
       text-decoration: none;
       transition: var(--transition);
@@ -231,21 +258,32 @@
       z-index: 1;
       border: none;
       cursor: pointer;
-      font-size: 16px;
+      font-size: 15px;
     }
 
     .btn-primary {
       background: var(--primary);
       color: white;
-      box-shadow: 0 10px 20px rgba(37, 99, 235, 0.3);
+      box-shadow: 0 8px 20px rgba(37, 99, 235, 0.25);
     }
 
     .btn-primary:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 15px 30px rgba(37, 99, 235, 0.4);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 25px rgba(37, 99, 235, 0.35);
       background: var(--primary-dark);
     }
 
+    /* Arrow icon animation for buttons */
+    .btn-primary .icon-arrow-right {
+        display: inline-block;
+        transition: transform 0.3s ease-out;
+    }
+
+    .btn-primary:hover .icon-arrow-right {
+        transform: translateX(5px);
+    }
+
+    /* Shine effect on buttons */
     .btn-primary:before {
       content: '';
       position: absolute;
@@ -254,7 +292,7 @@
       width: 100%;
       height: 100%;
       background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-      transition: 0.5s;
+      transition: 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
       z-index: -1;
     }
 
@@ -262,75 +300,67 @@
       left: 100%;
     }
 
+    /* Hero Image Styles */
     .hero-image {
       position: absolute;
       right: 0;
       top: 50%;
       transform: translateY(-50%);
       width: 50%;
-      max-width: 700px;
-      opacity: 0;
-      animation: fadeIn 1s forwards 1s;
-      border-radius: 20px;
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+      max-width: 650px;
+      border-radius: 15px;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+      z-index: 2; /* Ensure it's above particles */
     }
 
-    @keyframes fadeUp {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    @keyframes fadeIn {
-      to {
-        opacity: 1;
-      }
-    }
-
-    /* Features Section */
+    /* Section Title Styles */
     .section-title {
       text-align: center;
-      margin-bottom: 80px;
+      margin-bottom: 60px;
     }
 
     .section-title h2 {
-      font-size: 2.5rem;
-      margin-bottom: 15px;
+      font-size: 2.2rem;
+      margin-bottom: 12px;
       position: relative;
       display: inline-block;
+      color: var(--dark);
     }
 
+    /* Underline for section titles */
     .section-title h2:after {
       content: '';
       position: absolute;
-      width: 60px;
-      height: 4px;
+      width: 50px;
+      height: 3px;
       background: var(--secondary);
-      bottom: -15px;
+      bottom: -10px;
       left: 50%;
       transform: translateX(-50%);
-      border-radius: 2px;
+      border-radius: 1.5px;
     }
 
     .section-title p {
       color: var(--gray);
-      max-width: 700px;
+      max-width: 600px;
       margin: 0 auto;
-      font-size: 1.1rem;
+      font-size: 1rem;
     }
 
+    /* Features (Services) Section Grid */
     .features-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 30px;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
     }
 
+    /* Feature Card Styles */
     .feature-card {
       background: white;
-      border-radius: 15px;
-      padding: 40px 30px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+      border-radius: 12px;
+      padding: 35px 25px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.04);
+      border: 1px solid var(--border-light);
       transition: var(--transition);
       position: relative;
       overflow: hidden;
@@ -338,58 +368,631 @@
     }
 
     .feature-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+      transform: translateY(-8px);
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.08);
     }
 
+    /* Top border effect for feature cards */
     .feature-card:before {
       content: '';
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
-      height: 5px;
+      height: 4px;
       background: var(--primary);
       transition: var(--transition);
     }
 
     .feature-card:hover:before {
-      height: 10px;
+      height: 8px;
       background: var(--secondary);
     }
 
+    /* Feature Icon Styles */
     .feature-icon {
-      width: 70px;
-      height: 70px;
-      background: rgba(37, 99, 235, 0.1);
-      border-radius: 15px;
+      width: 65px;
+      height: 65px;
+      background: rgba(37, 99, 235, 0.08);
+      border-radius: 12px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 30px;
+      font-size: 28px;
       color: var(--primary);
-      margin-bottom: 25px;
+      margin-bottom: 20px;
       transition: var(--transition);
     }
 
     .feature-card:hover .feature-icon {
       background: var(--primary);
       color: white;
-      transform: rotateY(180deg);
+      transform: rotateY(360deg); /* Full spin on hover */
     }
 
     .feature-card h3 {
-      font-size: 1.4rem;
-      margin-bottom: 15px;
+      font-size: 1.3rem;
+      margin-bottom: 12px;
       color: var(--dark);
     }
 
     .feature-card p {
       color: var(--gray);
-      font-size: 1rem;
+      font-size: 0.95rem;
     }
 
-    /* Responsive */
+    /* Process Section */
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 40px; /* More space between steps */
+      counter-reset: process-step; /* Initialize counter */
+    }
+
+    .process-step {
+      background: white;
+      border-radius: 12px;
+      padding: 35px 25px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.04);
+      border: 1px solid var(--border-light);
+      text-align: center;
+      position: relative;
+      transition: var(--transition);
+    }
+
+    .process-step:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 12px 35px rgba(0, 0, 0, 0.08);
+    }
+
+    .process-step:before {
+        counter-increment: process-step; /* Increment counter */
+        content: counter(process-step); /* Display step number */
+        position: absolute;
+        top: -20px; /* Position above the card */
+        left: 50%;
+        transform: translateX(-50%);
+        background: var(--secondary);
+        color: white;
+        width: 45px;
+        height: 45px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.2rem;
+        font-weight: 700;
+        border: 3px solid var(--light); /* White border around number */
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        z-index: 2;
+    }
+
+    .process-step-icon {
+        width: 70px;
+        height: 70px;
+        background: rgba(37, 99, 235, 0.08);
+        border-radius: 50%; /* Circular icon */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 30px;
+        color: var(--primary);
+        margin: 20px auto 20px; /* Center and add margin */
+        transition: var(--transition);
+    }
+
+    .process-step:hover .process-step-icon {
+        background: var(--primary);
+        color: white;
+        transform: scale(1.1); /* Slightly grow icon on hover */
+    }
+
+    .process-step h3 {
+        font-size: 1.3rem;
+        margin-bottom: 10px;
+        color: var(--dark);
+    }
+
+    .process-step p {
+        color: var(--gray);
+        font-size: 0.95rem;
+    }
+
+    /* Portfolio Section */
+    .portfolio-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 25px;
+    }
+
+    .portfolio-item {
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.04);
+        border: 1px solid var(--border-light);
+        overflow: hidden;
+        transition: var(--transition);
+        position: relative;
+        cursor: pointer;
+    }
+
+    .portfolio-item:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 12px 35px rgba(0, 0, 0, 0.08);
+    }
+
+    .portfolio-item img {
+        width: 100%;
+        height: 220px; /* Fixed height for consistency */
+        object-fit: cover;
+        display: block;
+        transition: transform 0.4s ease;
+    }
+
+    .portfolio-item:hover img {
+        transform: scale(1.05); /* Zoom effect on image hover */
+    }
+
+    .portfolio-info {
+        padding: 20px;
+        text-align: center;
+    }
+
+    .portfolio-info h3 {
+        font-size: 1.2rem;
+        margin-bottom: 8px;
+        color: var(--dark);
+    }
+
+    .portfolio-info p {
+        color: var(--gray);
+        font-size: 0.9rem;
+    }
+
+    /* FAQ Section */
+    .faq {
+        background-color: var(--light);
+    }
+    .faq-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 25px;
+        align-items: start;
+    }
+
+    .faq-item {
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.04);
+        border: 1px solid var(--border-light);
+        overflow: hidden;
+        transition: var(--transition);
+    }
+
+    .faq-item:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+    }
+
+    .faq-question {
+        padding: 20px 25px;
+        background: var(--primary);
+        color: white;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-weight: 600;
+        font-size: 1rem;
+        transition: background-color 0.3s ease;
+    }
+
+    .faq-question:hover {
+        background-color: var(--primary-dark);
+    }
+
+    .faq-question i {
+        font-size: 1.1rem;
+        transition: transform 0.3s ease;
+    }
+
+    .faq-answer {
+        max-height: 0;
+        overflow: hidden;
+        padding: 0 25px;
+        transition: max-height 0.4s ease-out, padding 0.4s ease-out;
+        color: var(--dark);
+        background: var(--light);
+        border-top: 1px solid var(--border-light);
+    }
+
+    .faq-answer p {
+        padding-top: 20px;
+        padding-bottom: 20px;
+        color: var(--gray);
+        font-size: 0.95rem;
+    }
+
+    .faq-item.active .faq-question {
+        background-color: var(--primary-dark);
+    }
+
+    .faq-item.active .faq-question i {
+        transform: rotate(180deg);
+    }
+
+    .faq-item.active .faq-answer {
+        max-height: 250px; /* Adjusted based on expected content length */
+        padding: 20px 25px;
+    }
+
+    /* Reviews Section */
+    .reviews {
+        background-color: var(--primary);
+        color: white;
+        padding: 100px 0;
+    }
+
+    .reviews .section-title h2,
+    .reviews .section-title p {
+        color: white;
+    }
+
+    .reviews .section-title h2:after {
+        background: var(--secondary);
+    }
+
+    .reviews-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 25px;
+    }
+
+    .review-card {
+        background: rgba(255, 255, 255, 0.12);
+        border-radius: 12px;
+        padding: 25px;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        position: relative;
+        overflow: hidden;
+        transition: var(--transition);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .review-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+    }
+
+    .review-card:before {
+        content: '\201C';
+        font-family: serif;
+        font-size: 5rem;
+        color: rgba(255, 255, 255, 0.08);
+        position: absolute;
+        top: -15px;
+        left: 5px;
+        z-index: 0;
+    }
+
+    .review-text {
+        font-size: 1rem;
+        font-style: italic;
+        margin-bottom: 15px;
+        color: var(--light);
+        position: relative;
+        z-index: 1;
+    }
+
+    .review-author {
+        display: flex;
+        align-items: center;
+        margin-top: 15px;
+        gap: 12px;
+        position: relative;
+        z-index: 1;
+    }
+
+    .review-avatar {
+        width: 55px;
+        height: 55px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 2px solid var(--secondary);
+    }
+
+    .author-info strong {
+        display: block;
+        font-weight: 600;
+        color: white;
+        font-size: 1rem;
+    }
+
+    .author-info span {
+        color: rgba(255, 255, 255, 0.7);
+        font-size: 0.85rem;
+    }
+
+    .review-stars {
+        color: var(--secondary);
+        margin-top: 8px;
+        font-size: 0.95rem;
+    }
+
+    /* Schedule Section */
+    .schedule-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        max-width: 700px;
+        margin: 0 auto;
+        padding: 30px;
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.04);
+        border: 1px solid var(--border-light);
+    }
+
+    .schedule-content p {
+        font-size: 1rem;
+        color: var(--gray);
+        margin-bottom: 25px;
+    }
+
+    .schedule-content .btn {
+        margin-top: 10px;
+    }
+
+    /* Contact Section */
+    .contact-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        max-width: 700px;
+        margin: 0 auto;
+        padding: 30px;
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.04);
+        border: 1px solid var(--border-light);
+    }
+
+    .contact-content p {
+        font-size: 1rem;
+        color: var(--gray);
+        margin-bottom: 25px;
+    }
+
+    .contact-content form {
+        width: 100%;
+        max-width: 450px;
+        margin-top: 20px;
+    }
+
+    .contact-content input,
+    .contact-content textarea {
+        width: 100%;
+        margin-bottom: 12px;
+        padding: 10px 15px;
+        border: 1px solid var(--border-light);
+        border-radius: 6px;
+        font-family: 'Poppins', sans-serif;
+        font-size: 0.95rem;
+        transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .contact-content input:focus,
+    .contact-content textarea:focus {
+        outline: none;
+        border-color: var(--primary);
+        box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+    }
+
+    .contact-content textarea {
+        resize: vertical;
+    }
+
+    .contact-content .btn {
+        width: auto;
+        margin-top: 10px;
+    }
+
+    .contact-content .direct-email-link {
+        margin-top: 25px;
+        font-size: 1rem;
+        color: var(--dark);
+    }
+
+    .contact-content .direct-email-link a {
+        color: var(--primary);
+        text-decoration: none;
+        font-weight: 600;
+        transition: color 0.3s ease, text-decoration 0.3s ease;
+    }
+
+    .contact-content .direct-email-link a:hover {
+        color: var(--primary-dark);
+        text-decoration: underline;
+    }
+
+    /* Footer Styles */
+    footer {
+        background-color: var(--dark);
+        color: var(--light);
+        padding: 60px 0 30px;
+        font-size: 0.9rem;
+    }
+
+    .footer-content {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 40px;
+        margin-bottom: 40px;
+    }
+
+    .footer-about .footer-logo {
+        color: var(--primary);
+        font-size: 26px;
+        font-weight: 700;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 18px;
+    }
+
+    .footer-about .logo-icon {
+        background: var(--primary);
+        color: white;
+        width: 38px;
+        height: 38px;
+        border-radius: 8px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        transform: rotate(10deg);
+    }
+
+    .footer-about p {
+        color: rgba(255, 255, 255, 0.7);
+        line-height: 1.6;
+        font-size: 0.85rem;
+    }
+
+    .footer-links h4,
+    .footer-contact h4,
+    .footer-social h4 {
+        font-size: 1.2rem;
+        color: var(--light);
+        margin-bottom: 20px;
+        position: relative;
+    }
+
+    .footer-links h4:after,
+    .footer-contact h4:after,
+    .footer-social h4:after {
+        content: '';
+        position: absolute;
+        width: 35px;
+        height: 2px;
+        background: var(--secondary);
+        bottom: -8px;
+        left: 0;
+        border-radius: 1px;
+    }
+
+    .footer-links ul {
+        list-style: none;
+    }
+
+    .footer-links ul li {
+        margin-bottom: 12px;
+    }
+
+    .footer-links ul li a {
+        color: rgba(255, 255, 255, 0.7);
+        text-decoration: none;
+        transition: var(--transition);
+        display: inline-block;
+        position: relative;
+        font-size: 0.9rem;
+    }
+
+    .footer-links ul li a:hover {
+        color: var(--primary);
+        transform: translateX(3px);
+    }
+
+    .footer-links ul li a:before {
+        content: '\203A';
+        margin-right: 6px;
+        color: var(--secondary);
+        transition: var(--transition);
+        opacity: 0;
+        transform: translateX(-3px);
+        position: absolute;
+        left: -15px;
+    }
+
+    .footer-links ul li a:hover:before {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+
+    .footer-contact p {
+        color: rgba(255, 255, 255, 0.7);
+        margin-bottom: 12px;
+        display: flex;
+        align-items: flex-start;
+        gap: 8px;
+        font-size: 0.9rem;
+    }
+
+    .footer-contact p i {
+        color: var(--primary);
+        font-size: 1rem;
+        margin-top: 3px;
+    }
+
+    .footer-contact p a {
+        color: inherit;
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
+
+    .footer-contact p a:hover {
+        color: var(--primary);
+    }
+
+    .social-links {
+        display: flex;
+        gap: 12px;
+        margin-top: 15px;
+    }
+
+    .social-links a {
+        color: rgba(255, 255, 255, 0.7);
+        font-size: 1.3rem;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.08);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: var(--transition);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .social-links a:hover {
+        color: white;
+        background: var(--primary);
+        transform: translateY(-3px) rotate(3deg);
+    }
+
+    .copyright {
+        text-align: center;
+        color: rgba(255, 255, 255, 0.6);
+        padding-top: 30px;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+        margin-top: 30px;
+        font-size: 0.8rem;
+    }
+
+
+    /* Responsive Styles */
+    @media (max-width: 992px) {
+        .faq-grid, .process-grid, .portfolio-grid {
+            grid-template-columns: 1fr; /* Stack items on medium screens */
+        }
+    }
+
     @media (max-width: 768px) {
       .mobile-menu-btn {
         display: block;
@@ -401,7 +1004,8 @@
         left: 0;
         width: 100%;
         height: 100vh;
-        background: white;
+        background: rgba(255, 255, 255, 0.98);
+        backdrop-filter: blur(20px);
         display: flex;
         align-items: center;
         justify-content: center;
@@ -409,6 +1013,7 @@
         opacity: 0;
         transition: var(--transition);
         z-index: 1000;
+        border-bottom: none;
       }
 
       nav.active {
@@ -418,17 +1023,17 @@
 
       nav ul {
         flex-direction: column;
-        gap: 30px;
+        gap: 25px;
         text-align: center;
       }
 
       nav ul li a {
-        font-size: 1.2rem;
+        font-size: 1.1rem;
       }
 
       .hero {
         min-height: auto;
-        padding: 150px 0 100px;
+        padding: 120px 0 80px;
         height: auto;
         text-align: center;
       }
@@ -437,30 +1042,97 @@
         max-width: 100%;
       }
 
+      .hero h1 {
+          font-size: 2.8rem;
+      }
+
+      .hero p {
+          font-size: 1.05rem;
+      }
+
       .hero-image {
         position: relative;
         width: 100%;
         max-width: 100%;
         transform: none;
-        margin-top: 50px;
+        margin-top: 40px;
         opacity: 1;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      }
+
+      .section-title h2 {
+          font-size: 2rem;
+      }
+
+      .section-title p {
+          font-size: 0.95rem;
+      }
+
+      .footer-content {
+          grid-template-columns: 1fr;
+          gap: 30px;
+      }
+
+      .footer-about, .footer-links, .footer-contact, .footer-social {
+          text-align: center;
+          align-items: center;
+      }
+      .footer-links h4:after,
+      .footer-contact h4:after,
+      .footer-social h4:after {
+          left: 50%;
+          transform: translateX(-50%);
+      }
+      .footer-contact p {
+          justify-content: center;
+      }
+      .social-links {
+          justify-content: center;
       }
     }
+
+    @media (max-width: 480px) {
+        .hero h1 {
+            font-size: 2.2rem;
+        }
+        .hero p {
+            font-size: 0.95rem;
+        }
+        .btn {
+            padding: 10px 20px;
+            font-size: 13px;
+        }
+        .feature-card {
+            padding: 30px 20px;
+        }
+        .faq-question, .faq-answer {
+            padding: 18px 20px;
+        }
+        .faq-answer p {
+            padding-top: 18px;
+            padding-bottom: 18px;
+        }
+        .process-step {
+            padding: 30px 20px;
+        }
+        .portfolio-item img {
+            height: 180px; /* Adjust image height for smaller screens */
+        }
+    }
+
   </style>
 </head>
 <body>
-  <!-- Animated Background Elements -->
   <div class="bg-shape shape-1"></div>
   <div class="bg-shape shape-2"></div>
 
-  <!-- Header -->
   <header id="header">
     <div class="container header-container">
-      <a href="#" class="logo">
+      <a href="#home" class="logo">
         <span class="logo-icon"><i class="fas fa-arrow-up"></i></span>
         BrandLift
       </a>
-      <button class="mobile-menu-btn" id="mobileMenuBtn">
+      <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle mobile menu">
         <i class="fas fa-bars"></i>
       </button>
       <nav id="mainNav">
@@ -469,50 +1141,51 @@
           <li><a href="#services">Services</a></li>
           <li><a href="#process">Process</a></li>
           <li><a href="#portfolio">Portfolio</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#reviews">Reviews</a></li>
+          <li><a href="#schedule">Schedule</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
       </nav>
     </div>
   </header>
 
-  <!-- Hero Section -->
   <section class="hero" id="home">
-    <div class="container">
-      <div class="hero-content">
+    <div id="particles-js"></div> <div class="container">
+      <div class="hero-content" data-aos="fade-up" data-aos-delay="300">
         <h1>Websites That Lift Your Brand</h1>
-        <p>Custom web solutions that amplify your business identity through direct, personal service - no social media fluff, just results.</p>
+        <p>Custom web solutions that amplify your business identity through direct, personal service – no social media fluff, just results.</p>
         <a href="#contact" class="btn btn-primary">
           Get Your Free Consultation
-          <i class="fas fa-arrow-right"></i>
+          <span class="icon-arrow-right"><i class="fas fa-arrow-right"></i></span>
         </a>
       </div>
-      <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="BrandLift Hero" class="hero-image">
+      <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="BrandLift Hero" class="hero-image" data-aos="fade-left" data-aos-delay="800">
     </div>
   </section>
 
-  <!-- Services Section -->
   <section class="features" id="services">
     <div class="container">
-      <div class="section-title">
-        <h2 class="animate-on-scroll">Our Services</h2>
-        <p class="animate-on-scroll">We deliver comprehensive web solutions tailored to elevate your brand's digital presence</p>
+      <div class="section-title" data-aos="fade-up">
+        <h2>Our Services</h2>
+        <p>We deliver comprehensive web solutions tailored to elevate your brand's digital presence.</p>
       </div>
       <div class="features-grid">
-        <div class="feature-card animate-on-scroll">
+        <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
           <div class="feature-icon">
             <i class="fas fa-pencil-ruler"></i>
           </div>
           <h3>Brand-Centric Design</h3>
           <p>Custom layouts that perfectly reflect your brand identity with mobile-responsive designs that impress on any device.</p>
         </div>
-        <div class="feature-card animate-on-scroll" style="transition-delay: 0.2s">
+        <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
           <div class="feature-icon">
             <i class="fas fa-code"></i>
           </div>
           <h3>Strategic Development</h3>
           <p>Fast, secure websites built for growth with SEO-friendly architecture that helps you get found.</p>
         </div>
-        <div class="feature-card animate-on-scroll" style="transition-delay: 0.4s">
+        <div class="feature-card" data-aos="fade-up" data-aos-delay="300">
           <div class="feature-icon">
             <i class="fas fa-rocket"></i>
           </div>
@@ -523,16 +1196,264 @@
     </div>
   </section>
 
-  <!-- Footer -->
+  <section class="process" id="process">
+    <div class="container">
+      <div class="section-title" data-aos="fade-up">
+        <h2>Our Streamlined Process</h2>
+        <p>We follow a clear and collaborative process to ensure your web project is a success from start to finish.</p>
+      </div>
+      <div class="process-grid">
+        <div class="process-step" data-aos="fade-up" data-aos-delay="100">
+          <div class="process-step-icon">
+            <i class="fas fa-comments"></i>
+          </div>
+          <h3>1. Discovery & Planning</h3>
+          <p>We start by understanding your vision, goals, and target audience to lay a solid foundation for your project.</p>
+        </div>
+        <div class="process-step" data-aos="fade-up" data-aos-delay="200">
+          <div class="process-step-icon">
+            <i class="fas fa-drafting-compass"></i>
+          </div>
+          <h3>2. Design & Prototyping</h3>
+          <p>Our designers craft intuitive and visually stunning mockups, ensuring the user experience is seamless and engaging.</p>
+        </div>
+        <div class="process-step" data-aos="fade-up" data-aos-delay="300">
+          <div class="process-step-icon">
+            <i class="fas fa-laptop-code"></i>
+          </div>
+          <h3>3. Development & Integration</h3>
+          <p>Our developers bring the designs to life with clean, efficient code, integrating all necessary functionalities and content.</p>
+        </div>
+        <div class="process-step" data-aos="fade-up" data-aos-delay="400">
+          <div class="process-step-icon">
+            <i class="fas fa-vial"></i>
+          </div>
+          <h3>4. Testing & Refinement</h3>
+          <p>Rigorous testing ensures your website is bug-free, responsive, and performs flawlessly across all devices and browsers.</p>
+        </div>
+        <div class="process-step" data-aos="fade-up" data-aos-delay="500">
+          <div class="process-step-icon">
+            <i class="fas fa-paper-plane"></i>
+          </div>
+          <h3>5. Launch & Optimization</h3>
+          <p>We deploy your website, ensuring a smooth launch, and continue to monitor and optimize for peak performance.</p>
+        </div>
+        <div class="process-step" data-aos="fade-up" data-aos-delay="600">
+          <div class="process-step-icon">
+            <i class="fas fa-chart-line"></i>
+          </div>
+          <h3>6. Ongoing Support & Growth</h3>
+          <p>Our partnership doesn't end at launch. We provide continuous support and strategies for long-term growth and success.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="portfolio" id="portfolio">
+    <div class="container">
+      <div class="section-title" data-aos="fade-up">
+        <h2>Our Recent Work</h2>
+        <p>Explore some of our latest projects and see how we've helped businesses elevate their online presence.</p>
+      </div>
+      <div class="portfolio-grid">
+        </div>
+    </div>
+  </section>
+
+  <section class="faq" id="faq">
+    <div class="container">
+      <div class="section-title" data-aos="fade-up">
+        <h2>Frequently Asked Questions</h2>
+        <p>Find answers to common questions about our web design and development services.</p>
+      </div>
+      <div class="faq-grid">
+        <div class="faq-item" data-aos="fade-up" data-aos-delay="100">
+          <div class="faq-question">
+            <span>What is your typical web design process?</span>
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            <p>Our process typically involves an initial consultation, proposal and discovery, design and development, content integration, testing, launch, and ongoing support. We ensure you're involved at every key stage.</p>
+          </div>
+        </div>
+        <div class="faq-item" data-aos="fade-up" data-aos-delay="200">
+          <div class="faq-question">
+            <span>How long does it take to build a website?</span>
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            <p>The timeline varies depending on the complexity and scope of the project. A standard business website might take 4-8 weeks, while more complex e-commerce or custom web applications could take several months. We'll provide a detailed timeline in our proposal.</p>
+          </div>
+        </div>
+        <div class="faq-item" data-aos="fade-up" data-aos-delay="300">
+          <div class="faq-question">
+            <span>Do you offer ongoing website maintenance?</span>
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            <p>Yes, we offer various maintenance packages to keep your website secure, updated, and performing optimally. This can include software updates, backups, security monitoring, and content revisions.</p>
+          </div>
+        </div>
+        <div class="faq-item" data-aos="fade-up" data-aos-delay="100">
+          <div class="faq-question">
+            <span>What platforms do you specialize in?</span>
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            <p>We work with a variety of modern web technologies and content management systems (CMS) including custom HTML/CSS/JavaScript, WordPress, and other relevant frameworks depending on your specific needs. We choose the best tools for your project.</p>
+          </div>
+        </div>
+        <div class="faq-item" data-aos="fade-up" data-aos-delay="200">
+          <div class="faq-question">
+            <span>Can you help with SEO and digital marketing?</span>
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            <p>Our websites are built with SEO best practices in mind from the ground up. While we focus on web development, we can also provide guidance and recommend trusted partners for broader digital marketing strategies if needed.</p>
+          </div>
+        </div>
+        <div class="faq-item" data-aos="fade-up" data-aos-delay="300">
+          <div class="faq-question">
+            <span>How much does a website cost?</span>
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            <p>Website costs depend on many factors, such as design complexity, features, and content requirements. We offer custom quotes after understanding your specific needs during a free consultation. Our goal is to provide exceptional value for your investment.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="reviews" id="reviews">
+    <div class="container">
+      <div class="section-title" data-aos="fade-up">
+        <h2>What Our Clients Say</h2>
+        <p>Hear directly from businesses who have experienced the BrandLift difference.</p>
+      </div>
+      <div class="reviews-grid">
+        <div class="review-card" data-aos="fade-up" data-aos-delay="100">
+          <p class="review-text">"BrandLift transformed our old, outdated website into a modern, responsive masterpiece. The attention to detail and personal service was exceptional. We've seen a noticeable increase in engagement!"</p>
+          <div class="review-author">
+            <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=150&h=150" alt="Client Avatar 1" class="review-avatar">
+            <div class="author-info">
+              <strong>Jane Doe</strong>
+              <span>CEO, Creative Solutions</span>
+            </div>
+          </div>
+          <div class="review-stars">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+          </div>
+        </div>
+        <div class="review-card" data-aos="fade-up" data-aos-delay="200">
+          <p class="review-text">"We needed a website that truly reflected our brand's unique identity. BrandLift not only delivered an aesthetically pleasing site but also one that is incredibly functional and easy to manage."</p>
+          <div class="review-author">
+            <img src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?auto=format&fit=crop&q=80&w=150&h=150" alt="Client Avatar 2" class="review-avatar">
+            <div class="author-info">
+              <strong>John Smith</strong>
+              <span>Founder, TechInnovate</span>
+            </div>
+          </div>
+          <div class="review-stars">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+          </div>
+        </div>
+        <div class="review-card" data-aos="fade-up" data-aos-delay="300">
+          <p class="review-text">"From the initial consultation to launch and beyond, the BrandLift team has been fantastic. Their support is top-notch, and they truly care about our success online. Highly recommend!"</p>
+          <div class="review-author">
+            <img src="https://images.unsplash.com/photo-1531427186611-ecfd6d951bc4?auto=format&fit=crop&q=80&w=150&h=150" alt="Client Avatar 3" class="review-avatar">
+            <div class="author-info">
+              <strong>Emily White</strong>
+              <span>Owner, Green Thumb Nurseries</span>
+            </div>
+          </div>
+          <div class="review-stars">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="schedule" id="schedule">
+    <div class="container">
+      <div class="section-title" data-aos="fade-up">
+        <h2>Ready to Get Started?</h2>
+        <p>Book a free 30-minute consultation with our team to discuss your project and how BrandLift can elevate your online presence. We're excited to hear your ideas!</p>
+      </div>
+      <div class="schedule-content" data-aos="zoom-in" data-aos-delay="200">
+        <p>Our team is available for virtual consultations during business hours, Monday to Friday. Use the button below to find a time that works best for you.</p>
+        <a href="#contact" class="btn btn-primary">
+          Schedule Your Consultation
+          <span class="icon-arrow-right"><i class="fas fa-calendar-check"></i></span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <div class="container">
+      <div class="section-title" data-aos="fade-up">
+        <h2>Get In Touch</h2>
+        <p>Have a question or ready to start your project? Reach out to us directly!</p>
+      </div>
+      <div class="contact-content" data-aos="fade-up" data-aos-delay="200">
+        <div>
+            <form>
+                <input type="text" placeholder="Your Name" required>
+                <input type="email" placeholder="Your Email" required>
+                <textarea placeholder="Your Message" rows="5"></textarea>
+                <button type="submit" class="btn btn-primary">Send Message <i class="fas fa-paper-plane"></i></button>
+            </form>
+            <p class="direct-email-link">
+                Prefer to email directly? Send us a message at: <a href="mailto:officialbrandlift1@gmail.com">officialbrandlift1@gmail.com</a>
+            </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <footer>
     <div class="container">
       <div class="footer-content">
-        <div class="footer-about">
-          <a href="#" class="footer-logo"> 
+        <div class="footer-about" data-aos="fade-right" data-aos-delay="100">
+          <a href="#home" class="footer-logo">
             <span class="logo-icon"><i class="fas fa-arrow-up"></i></span>
             BrandLift
           </a>
           <p>We help businesses elevate their online presence through custom web solutions and direct, personal service.</p>
+        </div>
+
+        <div class="footer-links" data-aos="fade-up" data-aos-delay="200">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#process">Process</a></li>
+            <li><a href="#portfolio">Portfolio</a></li>
+            <li><a href="#faq">FAQ</a></li>
+            <li><a href="#reviews">Reviews</a></li>
+            <li><a href="#schedule">Schedule</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-contact" data-aos="fade-up" data-aos-delay="300">
+          <h4>Contact Us</h4>
+          <p><i class="fas fa-map-marker-alt"></i> 123 Web St, Grimsby, ON L3M 1A1</p>
+          <p><i class="fas fa-phone"></i> +1 (905) 555-1234</p>
+          <p><i class="fas fa-envelope"></i> <a href="mailto:officialbrandlift1@gmail.com">officialbrandlift1@gmail.com</a></p>
+        </div>
+
+        <div class="footer-social" data-aos="fade-left" data-aos-delay="400">
+          <h4>Connect with Us</h4>
+          <p>Follow us on social media for updates.</p>
+          <div class="social-links">
+            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          </div>
         </div>
       </div>
       <div class="copyright">
@@ -541,10 +1462,201 @@
     </div>
   </footer>
 
-  <!-- JavaScript for Mobile Menu -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+
   <script>
-    document.getElementById('mobileMenuBtn').addEventListener('click', function () {
-      document.getElementById('mainNav').classList.toggle('active');
+    document.addEventListener('DOMContentLoaded', (event) => {
+        // Initialize AOS (Animate On Scroll) library
+        AOS.init({
+            duration: 800, // animation duration in ms
+            once: true, // whether animation should happen only once - while scrolling down
+            mirror: false // whether elements should animate out of view - useful for "bounce in/out" animations
+        });
+
+        // Initialize Particles.js for the hero section background
+        particlesJS('particles-js', {
+          "particles": {
+            "number": {
+              "value": 80, // Number of particles
+              "density": {
+                "enable": true,
+                "value_area": 800
+              }
+            },
+            "color": {
+              "value": "#2563eb" /* Primary color for particles */
+            },
+            "shape": {
+              "type": "circle", // Particle shape
+              "stroke": {
+                "width": 0,
+                "color": "#000000"
+              },
+              "polygon": {
+                "nb_sides": 5
+              }
+            },
+            "opacity": {
+              "value": 0.5, // Particle opacity
+              "random": false,
+              "anim": {
+                "enable": false,
+                "speed": 1,
+                "opacity_min": 0.1,
+                "sync": false
+              }
+            },
+            "size": {
+              "value": 3, // Particle size
+              "random": true,
+              "anim": {
+                "enable": false,
+                "speed": 40,
+                "size_min": 0.1,
+                "sync": false
+              }
+            },
+            "line_linked": {
+              "enable": true,
+              "distance": 150, // Distance for lines between particles
+              "color": "#2563eb", /* Primary color for lines */
+              "opacity": 0.4,
+              "width": 1
+            },
+            "move": {
+              "enable": true,
+              "speed": 6, // Particle movement speed
+              "direction": "none",
+              "random": false,
+              "straight": false,
+              "out_mode": "out",
+              "bounce": false,
+              "attract": {
+                "enable": false,
+                "rotateX": 600,
+                "rotateY": 1200
+              }
+            }
+          },
+          "interactivity": {
+            "detect_on": "canvas",
+            "events": {
+              "onhover": {
+                "enable": true,
+                "mode": "grab" // Grab particles on hover
+              },
+              "onclick": {
+                "enable": true,
+                "mode": "push" // Push particles on click
+              },
+              "resize": true
+            },
+            "modes": {
+              "grab": {
+                "distance": 140,
+                "line_linked": {
+                  "opacity": 1
+                }
+              },
+              "bubble": {
+                "distance": 400,
+                "size": 40,
+                "duration": 2,
+                "opacity": 8,
+                "speed": 3
+              },
+              "repulse": {
+                "distance": 200,
+                "duration": 0.4
+              },
+              "push": {
+                "particles_nb": 4
+              },
+              "remove": {
+                "particles_nb": 2
+              }
+            }
+          },
+          "retina_detect": true
+        });
+
+        // Mobile Menu Toggle Functionality
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mainNav = document.getElementById('mainNav');
+
+        if (mobileMenuBtn && mainNav) {
+            mobileMenuBtn.addEventListener('click', function () {
+                mainNav.classList.toggle('active');
+                // Toggle the icon between bars and times
+                const icon = mobileMenuBtn.querySelector('i');
+                if (mainNav.classList.contains('active')) {
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-times');
+                } else {
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
+            });
+        }
+
+
+        // Close mobile menu when a navigation link is clicked
+        document.querySelectorAll('#mainNav ul li a').forEach(item => {
+            item.addEventListener('click', () => {
+                if (mainNav.classList.contains('active')) { // Only close if menu is active
+                    mainNav.classList.remove('active');
+                    mobileMenuBtn.querySelector('i').classList.remove('fa-times');
+                    mobileMenuBtn.querySelector('i').classList.add('fa-bars');
+                }
+            });
+        });
+
+        // Header Scroll Effect: Add/Remove 'scrolled' class based on scroll position
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // FAQ Accordion Functionality
+        document.querySelectorAll('.faq-question').forEach(button => {
+            button.addEventListener('click', () => {
+                const faqItem = button.closest('.faq-item');
+                // Toggle the 'active' class on the parent FAQ item
+                faqItem.classList.toggle('active');
+
+                const answer = faqItem.querySelector('.faq-answer');
+                if (faqItem.classList.contains('active')) {
+                    // Set max-height to scrollHeight to allow smooth transition for variable content
+                    answer.style.maxHeight = answer.scrollHeight + 'px';
+                } else {
+                    answer.style.maxHeight = '0'; // Collapse the answer
+                }
+            });
+        });
+
+        // Prevent default form submission (since no backend is connected)
+        document.querySelector('.contact-content form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            // You can add a custom message here instead of an alert
+            console.log('Form submitted! (No backend connected, so no email sent)');
+            // For a real application, you would send this data to a server here.
+            // Example: Display a temporary success message to the user
+            const form = e.target;
+            const submitButton = form.querySelector('.btn-primary');
+            const originalButtonText = submitButton.innerHTML;
+            submitButton.innerHTML = 'Message Sent! <i class="fas fa-check"></i>';
+            submitButton.disabled = true;
+            setTimeout(() => {
+                submitButton.innerHTML = originalButtonText;
+                submitButton.disabled = false;
+                form.reset(); // Clear the form fields
+            }, 3000);
+        });
     });
   </script>
 </body>
